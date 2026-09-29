@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Salsa Scramble</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="marquee">
+    <h1>Salsa Scramble</h1>
+  </header>
+
+  <main class="theater">
+    <section class="side left">
+      <div class="panel">
+        <h2>Backstage</h2>
+        <canvas id="hold" data-w="96" data-h="96"></canvas>
+      </div>
+      <div class="panel stats">
+        <div><span>Score</span><strong id="score">0</strong></div>
+        <div><span>Lines</span><strong id="lines">0</strong></div>
+        <div><span>Tempo</span><strong id="level">1</strong></div>
+        <div><span>Best</span><strong id="best">0</strong></div>
+      </div>
+    </section>
+
+    <div class="stage">
+      <div class="proscenium">
+        <div class="valance"></div>
+        <div class="stage-row">
+          <div class="curtain-side left"></div>
+          <div class="board-wrap">
+            <canvas id="board" data-w="300" data-h="600"></canvas>
+            <div id="ole" class="ole hidden" role="dialog" aria-live="assertive">
+              <div class="ole-card">
+                <p id="ole-kicker" class="ole-kicker">🎤 Shout</p>
+                <h2 class="ole-word">¡OLÉ!</h2>
+                <div class="ole-meter"><div id="ole-fill"></div></div>
+                <p id="ole-hint">to send the dancers off</p>
+                <button id="ole-tap" class="ole-tap hidden">Can't shout? Tap</button>
+              </div>
+            </div>
+            <div id="overlay" class="overlay">
+              <div class="drape left"></div>
+              <div class="drape right"></div>
+              <div class="overlay-content">
+                <p class="tagline">Tonight only</p>
+                <h2 class="show-title">Salsa Scramble</h2>
+                <p id="overlay-msg">Press Enter or tap to start</p>
+                <button id="start-btn">Curtain up</button>
+              </div>
+            </div>
+          </div>
+          <div class="curtain-side right"></div>
+        </div>
+      </div>
+      <div class="apron"><div class="footlights"></div></div>
+    </div>
+
+    <section class="side right">
+      <div class="panel">
+        <h2>On Deck</h2>
+        <canvas id="next" data-w="96" data-h="288"></canvas>
+      </div>
+      <div class="panel help">
+        <p><kbd>←</kbd><kbd>→</kbd> Move</p>
+        <p><kbd>↑</kbd> / <kbd>X</kbd> Spin</p>
+        <p><kbd>Z</kbd> Spin back</p>
+        <p><kbd>↓</kbd> Soft drop</p>
+        <p><kbd>Space</kbd> Hard drop</p>
+        <p><kbd>C</kbd> Backstage</p>
+        <p><kbd>P</kbd> Pause</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="audience" aria-hidden="true"></div>
+
+  <div class="touch-controls">
+    <button data-action="left">◀</button>
+    <button data-action="rotate">⟳</button>
+    <button data-action="right">▶</button>
+    <button data-action="hold">Hold</button>
+    <button data-action="soft">▼</button>
+    <button data-action="drop">⤓</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
